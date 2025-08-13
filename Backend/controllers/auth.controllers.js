@@ -19,7 +19,7 @@ export const signUp = async(req,res) =>{
         const hashedPassword = await bcrypt.hash(password,10);
 
         const user = await User.create({
-            name,email,passowrd:hashedPassword
+            name,email,password:hashedPassword
         });
 
         const token =await genToken(user._id);
@@ -33,6 +33,7 @@ export const signUp = async(req,res) =>{
 
         return res.status(201).json("user created successfully",user);
     }catch(err){
+        console.log(err.message);
         return res.status(500).json("error in sign up",err.message);
     }
 }
@@ -47,7 +48,7 @@ export const login = async(req,res) =>{
             return res.status(400).json({message:"Email does not exist"});
         }
 
-        const isMatch= await bcrypt.compare(passowrd,user.password);
+        const isMatch= await bcrypt.compare(password,user.password);
 
         if(!isMatch){
             return res.status(400).json({message:"Incorrect password"});
