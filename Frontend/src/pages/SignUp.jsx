@@ -8,7 +8,7 @@ import axios from "axios";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { serverUrl } = useContext(userDataContext);
+  const { serverUrl,userData,setUserData} = useContext(userDataContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,9 +31,11 @@ const SignUp = () => {
         { withCredentials: true }
       );
       setLoading(false);
-      console.log(result);
+      setUserData(result.data);
+      navigate("/customize");
     } catch (err) {
       console.error(err);
+      setUserData(null);
       setLoading(false);
       setErr(err.response.data.message)
     }

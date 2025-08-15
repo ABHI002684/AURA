@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { serverUrl } = useContext(userDataContext);
+  const { serverUrl,userData,setUserData } = useContext(userDataContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -31,9 +31,11 @@ const Login = () => {
         { withCredentials: true }
       );
       setLoading(false);
-      console.log(result);
+      setUserData(result.data);
+      navigate("/");
     } catch (err) {
       console.error(err);
+      setUserData(null);
       setLoading(false);
       setErr(err.response.data.message);
     }
