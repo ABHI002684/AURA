@@ -14,7 +14,7 @@ const App = () => {
       <Routes>
         <Route
           path="/signup"
-          element={!userData ? <SignUp /> : <Navigate to={"/"} />}
+          element={!userData ? <SignUp /> : <Navigate to={"/customize"} />}
         />
         <Route
           path="/login"
@@ -22,12 +22,12 @@ const App = () => {
         />
         <Route
           path="/customize"
-          element={userData ? <Customize /> : <Navigate to={"/login"} />}
+          element={userData ? <Customize /> : <Navigate to={"/signup"} />}
         />
 
         <Route
           path="/customize2"
-          element={userData ? <Customize2 /> : <Navigate to={"/login"} />}
+          element={userData ? <Customize2 /> : <Navigate to={"/signup"} />}
         />
 
         <Route

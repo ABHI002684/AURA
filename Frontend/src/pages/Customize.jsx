@@ -5,6 +5,7 @@ import Avtaar2 from "../assets/Avtaar2.png";
 import Avtaar3 from "../assets/Avtaar3.png";
 import Avtaar4 from "../assets/Avtaar4.png";
 
+import { IoArrowBackSharp } from "react-icons/io5";
 import { RiImageAddLine } from "react-icons/ri";
 import { userDataContext } from "../context/UserContext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +32,10 @@ const Customize = () => {
   };
   return (
     <div className="w-full h-[100vh] bg-gradient-to-t from-[#000000b6] to-[#075a78] flex justify-center items-center flex-col p-[20px] gap-[20px]">
+      <IoArrowBackSharp
+              className="absolute top-[30px] left-[30px] text-[white] w-[25px] h-[25px] cursor-pointer"
+              onClick={() => navigate("/")}
+            />
       <h1 className="text-[white] mb-[30px] text-center text-[30px]  ">
         Select your <span className="text-[#ca0808d9]">Assistant Image</span>
       </h1>
